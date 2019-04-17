@@ -9,5 +9,5 @@
 * Shares variables between SASS and JavaScript (React Component)
 
 ## Animation:
-![picture alt](http://www.brightlightpictures.com/assets/images/portfolio/thethaw_header.jpg "Title is optional")
+![Animation showing how Custom Image works](img/creation_process.gif "Custom Image in Action")
 
