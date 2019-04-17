@@ -1,0 +1,234 @@
+@import '../json/custom-image-vars.json';
+@import './global.scss';
+
+$container-width: $containerWidth + 0px;
+$container-height: $containerHeight + 0px;
+$image-width: $imageWidth + 0px;
+$image-height: $imageHeight + 0px;
+$slider-height: $sliderHeight + 0px;
+$horizontal-margin: ($container-width - $image-width)/2;
+$vertical-margin: ($container-height - $image-height)/2;
+$modal-padding: 10px;
+$modal-content-z-index: 200;
+
+div#initial-view {
+    background-color: white;
+}
+
+div#main-drop-target {
+    text-align: center;
+    height: $container-height;
+    width: $container-width;
+    overflow: hidden;
+    position: absolute;
+    z-index: $modal-content-z-index + 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    background-color: white;
+    .is-dragover {
+        background-color: lightsteelblue;
+    }
+    * {
+        pointer-events: none;
+    }
+    .upload-icon {
+        font-size: 40px;
+    }
+}
+
+div#user-interface {
+    %button-para-shared {
+        color: $btn-primary-border;
+        position: absolute;
+        text-shadow: 2px 2px 8px #FFF;
+        z-index: $modal-content-z-index + 2;
+    }
+
+    z-index: $modal-content-z-index + 4;
+    height: $container-height;
+    width: $container-width;
+    position: absolute;
+    pointer-events: none;
+    #toggle-mask-button {
+        width: 100px;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+    }
+    * {
+        pointer-events: all;
+    }
+    #create-button {
+        width: 100px;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+    }
+
+    div#vertical-slider {
+        border: thin solid $btn-primary-border;
+        border-radius: 5px;
+        background-color: #eee;
+        width: 10px;
+        height: $slider-height;
+        position: absolute;
+        right: 10px;
+        top: ($container-height - $slider-height)/2;
+
+    }
+
+    div#rotate-button,
+    div#center-button {
+        bottom: 0;
+        text-align: center;
+        font-size: 150%;
+        p.center-para {
+            @extend %button-para-shared;
+            top: 0;
+        }
+        p.rotate-para {
+            @extend %button-para-shared;
+            bottom: 0;
+        }
+    }
+
+    .ui-slider-handle {
+        border: thin $btn-primary-bg solid;
+        border-radius: 3px;
+        background-color: $btn-primary-border
+    }
+
+    .ui-slider {
+        position: relative;
+        text-align: left;
+        .ui-slider-handle {
+            position: absolute;
+            z-index: 2;
+            width: 1.2em;
+            height: 1.2em;
+            cursor: default;
+        }
+
+        .ui-slider-range {
+            position: absolute;
+            z-index: 1;
+            font-size: .7em;
+            display: block;
+            border: 0;
+            background-position: 0 0;
+        }
+    }
+
+    .ui-slider-vertical {
+        width: .8em;
+        height: 100px;
+        .ui-slider-handle {
+            left: -.3em;
+            margin-left: 0;
+            margin-bottom: -.6em;
+        }
+        .ui-slider-range {
+            left: 0;
+            width: 100%;
+        }
+        .ui-slider-range-min {
+            bottom: 0;
+        }
+        .ui-slider-range-max {
+            top: 0;
+        }
+    }
+}
+
+div#image-border-holder {
+    z-index: $modal-content-z-index + 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    height: $container-height;
+    width: $container-width;
+    position: absolute;
+    pointer-events: none;
+    div#image-border {
+        border: thin $btn-primary-border solid;
+        height: $image-height;
+        width: $image-width;
+        position: absolute;
+    }
+}
+
+$polygon: polygon(
+                $horizontal-margin $vertical-margin,
+                $container-width - $horizontal-margin $vertical-margin,
+                $container-width - $horizontal-margin $container-height - $vertical-margin,
+                $horizontal-margin $container-height - $vertical-margin
+);
+
+div#image-container-div.clipped {
+    clip-path: $polygon;
+    -webkit-clip-path: $polygon;
+}
+
+div#image-container-div {
+    z-index: $modal-content-z-index + 2;
+    height: $container-height;
+    width: $container-width;
+    overflow: hidden;
+    position: absolute;
+    div#image-holder {
+        position: absolute;
+    }
+
+}
+
+div#preview-holder {
+    z-index: $modal-content-z-index + 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    height: $container-height;
+    width: $container-width;
+    position: absolute;
+    div#preview-mask {
+        height: $image-height;
+        width: $image-width;
+        position: absolute;
+        background-color: black;
+    }
+}
+
+#custom-image-modal .modal-content {
+    width: $container-width + 2 * $modal-padding;
+    padding: $modal-padding;
+    height: $container-height + 2 * $modal-padding;
+    border-radius: $modal-padding;
+    margin: auto;
+}
+
+.modal {
+    height: auto; //set a desired number
+    width: auto;
+}
+
+input.hidden-file-input,
+#preview-mask.hidden-mask,
+.hidden-form,
+button.hidden-upload-button,
+div.hidden-image-container-div,
+div#main-drop-target.hidden-main-drop-target,
+p.hidden-file-chooser-paragraph,
+div.rectangle-mask-hidden {
+    display: none;
+}

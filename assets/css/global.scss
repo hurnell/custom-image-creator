@@ -1,0 +1,17 @@
+$navbar-default-bg: #563d7c;
+$navbar-default-brand-color: #cbbde2;
+$navbar-default-brand-hover-color: white;
+$btn-primary-bg:#563d7c;
+$btn-primary-color:#cbbde2;
+
+@import './_bootstrap.scss';
+@import '../json/custom-image-vars.json';
+
+.display-image-holder {
+    .display-image {
+        width: $imageWidth + 0px;
+        height: $imageHeight + 0px;
+        margin:5em;
+        border: thin $btn-primary-color solid;
+    }
+}

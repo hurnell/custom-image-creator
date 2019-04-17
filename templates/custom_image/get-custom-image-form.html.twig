@@ -1,0 +1,53 @@
+{% block body %}
+    <div id="initial-view" class="js-container js-drop-target ">
+
+        <div id="image-container-div" class="hidden-image-container-div js-image-container js-drop-target">
+            <div id="image-holder" class="js-image-holder">
+                <img class="js-scalable-image js-drop-target" style="background-color: white;" src="">
+            </div>
+        </div>
+        <div id="main-drop-target" class="js-drop-target js-show-file-upload-dialog js-main-drop-target">
+            <div class="center">
+                <span class="upload-icon fa fa-angle-double-up">
+                </span>
+                <p id="file-chooser-paragraph" class="js-file-chooser-paragraph">
+                    Choose image to upload or drag it here
+                </p>
+            </div>
+        </div>
+        <div id="user-interface">
+            <div id="center-button" class="js-center-image-button">
+                <p class="fa fa-arrows center-para">&nbsp;</p>
+            </div>
+            <button id="toggle-mask-button" class="btn btn-primary js-toggle-mask-button" data-text-hidden="Preview"
+                    data-text-shown="Hide Mask">Preview
+            </button>
+            <div id="rotate-button" class="js-rotate-image-button">
+                <p class="fa fa-rotate-right rotate-para">&nbsp;</p>
+            </div>
+            <button id="create-button" class="btn btn-primary js-create-image-button">Create</button>
+            <div id="vertical-slider" class="carousel thin vertical js-vertical-slider"></div>
+        </div>
+        <div id="image-border-holder">
+            <div id="image-border"></div>
+        </div>
+        <div id="preview-holder">
+            <div id="preview-mask" class="js-preview-mask hidden-mask"></div>
+        </div>
+        {{ form_start(customImageForm,{
+            attr: {
+                'class': 'drag-and-drop-image-form js-image-form js-drop-target hidden-form',
+                'id': 'drag-and-drop-image-form'
+            }
+        }) }}
+        {{ form_row(customImageForm.imageFile, {
+            attr: {
+                'class': 'js-file-input hidden-file-input'
+            }
+        }) }}
+        <button id="file-upload-button" name="file-upload-button" type="submit" class="hidden-upload-button">Upload
+        </button>
+        {{ form_end(customImageForm) }}
+    </div>
+{% endblock %}
+

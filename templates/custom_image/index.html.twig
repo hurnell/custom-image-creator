@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Custom Image{% endblock %}
+
+        {% block stylesheets %}
+            {{ parent() }}
+        {% endblock %}
+{% block body %}
+
+    <button class="btn btn-primary btn custom-image-button text-center" data-toggle="modal" data-target="#custom-image-modal"
+            data-modal="custom-image-modal">Choose Image
+    </button>
+
+
+    <div class="js-show"></div>
+    <div class="display-image-holder">
+        <img src="{{ asset('build/static/empty.png') }} " class="display-image js-page-image">
+    </div>
+
+    <div id="custom-image-modal" class="modal fade" role="dialog" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('build/js/custom_image.js') }}"></script>
+{% endblock %}

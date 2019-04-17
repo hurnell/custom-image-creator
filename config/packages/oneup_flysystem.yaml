@@ -1,0 +1,9 @@
+# Read the documentation: https://github.com/1up-lab/OneupFlysystemBundle/tree/master/Resources/doc/index.md
+oneup_flysystem:
+    adapters:
+        public_adapter:
+            local:
+                directory: '%kernel.project_dir%/public'
+    filesystems:
+        public_filesystem:
+            adapter: public_adapter

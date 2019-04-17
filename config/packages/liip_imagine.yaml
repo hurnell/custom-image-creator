@@ -1,0 +1,32 @@
+liip_imagine:
+   # valid drivers options include "gd" or "gmagick" or "imagick"
+    driver: "gd"
+    cache: ~
+    resolvers:
+        public_uploads_adapter:
+            flysystem:
+                filesystem_service: oneup_flysystem.public_filesystem_filesystem
+                root_url:           "/"
+                cache_prefix:       media/cache
+                visibility:         public
+ #   loaders:
+ #       default:
+ #           flysystem:
+   #             filesystem_service: oneup_flysystem.public_uploads_filesystem_filesystem
+   # data_loader: custom_crop_filter
+      #      public_uploads_adapter:
+#
+#    # define your filter sets under this option
+    filter_sets:
+#
+#        # an example thumbnail transformation definition
+#        # https://symfony.com/doc/current/bundles/LiipImagineBundle/basic-usage.html#create-thumbnails
+        my_thumb:
+            cache: public_uploads_adapter
+            filters:
+                rotate:
+                    angle: 0
+                scale:
+                    to: 1
+                custom_crop_filter:
+

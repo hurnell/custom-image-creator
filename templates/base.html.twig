@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('build/css/global.css') }}">
+    {% endblock %}
+</head>
+<body>
+<div class="navbar navbar-default " role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Custom Image</a>
+        </div>
+    </div>
+</div>
+<div class="container main-content">
+    <div class="row text-center">
+        <div class="col-md-12">
+            {% block body %}{% endblock %}
+        </div>
+    </div>
+</div>
+{% block javascripts %}
+    <script src="{{ asset('build/runtime.js') }}"></script>
+    <script src="{{ asset('build/js/layout.js') }}"></script>
+{% endblock %}
+</body>
+</html>
