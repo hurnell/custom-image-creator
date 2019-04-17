@@ -16,6 +16,9 @@
 # Dependency directories
 node_modules
 
-public/*
+public/build/*
+public/bundles/*
+public/media/*
+public/uploads/*
 
 .idea/*
