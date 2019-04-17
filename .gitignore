@@ -16,9 +16,11 @@
 # Dependency directories
 node_modules
 
+# ignore everything in public except index.php
 public/build/*
 public/bundles/*
 public/media/*
 public/uploads/*
 
+# ignore phpstorm files
 .idea/*
